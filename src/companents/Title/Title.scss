@@ -1,0 +1,21 @@
+@import "../../App.scss";
+
+.title-box {
+    width: auto;
+    position: relative;
+    h1,
+    p {
+        color: $white;
+        font-family: $font-family-1;
+    }
+    h1 {
+        font-size: 34px;
+        font-weight: 700;
+        line-height: 60px;
+    }
+    p {
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+    }
+}

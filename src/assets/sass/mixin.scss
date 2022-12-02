@@ -1,0 +1,21 @@
+@mixin flex {
+    display: flex;
+    align-items: center;
+}
+@mixin fl-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@mixin fl-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@mixin p-absolute {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
