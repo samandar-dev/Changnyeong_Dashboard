@@ -1,0 +1,30 @@
+@import "../../App.scss";
+
+.date-time {
+  width: auto;
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-bottom: 62px;
+  &__day-month {
+    font-size: 16px;
+    line-height: 32px;
+    margin-right: 12px;
+  }
+  &__time {
+    font-size: 30px;
+    line-height: 41px;
+    span {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22px;
+    }
+  }
+  &__day-month,
+  &__time {
+    color: $white;
+    font-weight: 700;
+    font-family: $font-family-1;
+  }
+}
