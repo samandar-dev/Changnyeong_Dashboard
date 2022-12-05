@@ -39,18 +39,17 @@
             background: $primary-color-4;
         }
         p {
-            color: $white;
             font-size: 18px;
-            font-weight: 700;
             line-height: 25px;
-            text-align: center;
-            font-family: $font-family-1;
         }
         h4 {
-            color: $white;
             font-size: 32px;
-            font-weight: 700;
             line-height: 44px;
+        }
+        p,
+        h4 {
+            color: $white;
+            font-weight: 700;
             text-align: center;
             font-family: $font-family-1;
         }

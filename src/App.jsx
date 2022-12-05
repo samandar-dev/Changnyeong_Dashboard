@@ -6,6 +6,8 @@ import TrafficInfo from './companents/TrafficInfo/TrafficInfo';
 import VisitPopularity from "./companents/VisitPopularity/VisitPopularity";
 import DailyPopularPlaces from "./companents/DailyPopularPlaces/DailyPopularPlaces";
 import './App.scss';
+import WeeklyTopSpots from "./companents/WeeklyTopSpots/WeeklyTopSpots";
+import FPopulatRatio from "./companents/FPopulatRatio/FPopulatRatio";
 
 function App() {
   return (
@@ -24,9 +26,10 @@ function App() {
             <DateTime />
             <VisitPopularity />
             <DailyPopularPlaces />
+            <WeeklyTopSpots />
+            <FPopulatRatio />
           </div>
 
-          {/* <img className='map' src={map} alt="" /> */}
         </div>
       </div>
     </>

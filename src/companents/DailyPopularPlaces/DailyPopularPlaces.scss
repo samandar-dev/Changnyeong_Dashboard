@@ -7,7 +7,7 @@
     padding: 20px 24px 22px;
     border-radius: $bd-radius-3;
     background: $primary-color-2;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     &__title {
         color: $white;
         font-size: 18px;
@@ -26,46 +26,40 @@
         border-radius: $bd-radius-2;
         background: $primary-color-17;
         border: 1px solid $primary-color-18;
-        padding: 12px 22px 14px 18px;
+        padding: 12px 22px 12px 18px;
         margin-bottom: 10px;
-        // &:last-child{
-        //     margin: 0;
-        // }
+        &:last-child {
+            margin: 0;
+        }
     }
     &__num {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 22px;
-        color: $primary-color-9;
-        font-family: $font-family-1;
         margin-right: 42px;
     }
-    &__name {
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 22px;
-        color: $primary-color-9;
-        font-family: $font-family-1;
+    &__percentage {
+        text-align: right;
+        margin-left: auto;
     }
+    &__num,
+    &__name,
     &__percentage {
         font-size: 16px;
         font-weight: 400;
-        line-height: 19px;
-        text-align: right;
-        margin-left: auto;
+        line-height: 22px;
         color: $primary-color-9;
         font-family: $font-family-1;
     }
 }
 .dailyPPAct {
-    p,span {
+    padding: 12px 22px 12px 18px;
+    p,
+    span {
         color: #16f0f0;
     }
     border-color: #16f0f0;
     animation: animActItem 0.15s ease;
 }
-@keyframes animActItem {
-    100% {
-        transform: scale(1.03);
-    }
-}
+// @keyframes animActItem {
+//     100% {
+//         transform: scale(1.03);
+//     }
+// }

@@ -13,9 +13,13 @@
     justify-content: space-between;
 }
 @mixin p-absolute {
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+@mixin p-absolute-tt {
     top: 50%;
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
 }
-
