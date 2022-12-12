@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiFillCaretUp } from 'react-icons/ai';
 import "./FPopulatRatio.scss";
 
-export default function FPopulatRatio() {
+export default function FPopulatRatio({ setPopularName }) {
     const [epolulatActItem, setEpolulatActItem] = useState(1)
     const arr = [
         { id: 1, name: "옥천계곡", percentage: 15 },
@@ -18,7 +18,7 @@ export default function FPopulatRatio() {
                 <ul className="fPopulat__list">
                     {arr.map(item => (
                         <li className={`fPopulat__item ${epolulatActItem === item.id ? "fPopulatAct" : ""}`}
-                            onClick={() => setEpolulatActItem(item.id)}
+                            onClick={() => (setEpolulatActItem(item.id), setPopularName(item.name))}
                             key={item.id}
                         >
                             <div className="fPopulat__item-info">
@@ -30,7 +30,11 @@ export default function FPopulatRatio() {
                             </div>
 
                             <div className="fPopulat__item-range">
-                                <span style={{ width: `${item.percentage}%` }}></span>
+                                <span>
+                                    {/* <style>
+                                        {`@keyframes fPopulatAnimRange { 100% { width: ${item.percentage}px;} }`}
+                                    </style> */}
+                                </span>
                             </div>
                         </li>
                     ))}

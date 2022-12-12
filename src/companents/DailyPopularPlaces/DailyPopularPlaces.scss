@@ -36,8 +36,13 @@
         margin-right: 42px;
     }
     &__percentage {
+        @include flex;
         text-align: right;
         margin-left: auto;
+        span {
+            @include flex;
+            margin-right: 3px;
+        }
     }
     &__num,
     &__name,
@@ -56,10 +61,5 @@
         color: #16f0f0;
     }
     border-color: #16f0f0;
-    animation: animActItem 0.15s ease;
+    @include animClick;
 }
-// @keyframes animActItem {
-//     100% {
-//         transform: scale(1.03);
-//     }
-// }

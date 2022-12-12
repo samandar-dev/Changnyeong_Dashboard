@@ -20,7 +20,7 @@ import icon14 from "../../assets/icons/icon-14.svg";
 import icon15 from "../../assets/icons/icon-15.svg";
 import icon16 from "../../assets/icons/icon-16.svg";
 
-export default function WeeklyTopSpots() {
+export default function WeeklyTopSpots({setPopularName}) {
     const [weekSpotsActItem, setWeekSpotsActItem] = useState(1)
     const arr = [
         { id: 1, name: "옥천계곡", percentage: 38, iconID: icon11 },
@@ -36,7 +36,7 @@ export default function WeeklyTopSpots() {
                 <ul className="week-spots__list">
                     {arr.map(item => (
                         <li className={`week-spots__item ${item.id === weekSpotsActItem ? "weekSpotsActItem" : ""}`}
-                            onClick={() => setWeekSpotsActItem(item.id)}
+                            onClick={() => (setWeekSpotsActItem(item.id), setPopularName(item.name))}
                             key={item.id}
                         >
                             <span className='week-spots__item-icon'>

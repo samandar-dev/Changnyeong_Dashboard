@@ -2,7 +2,7 @@ import React from 'react';
 import { GiBackwardTime } from 'react-icons/gi';
 import './VisitPopularity.scss';
 
-export default function VisitPopularity() {
+export default function VisitPopularity({popularName}) {
     return (
         <>
             <section className='visit-popular'>
@@ -15,7 +15,7 @@ export default function VisitPopularity() {
                     </li>
                     <li className="visit-popular__info-item">
                         <p>실시간 인기 관광지</p>
-                        <h4>옥천계곡</h4>
+                        <h4>{popularName}</h4>
                     </li>
                 </ul>
             </section>

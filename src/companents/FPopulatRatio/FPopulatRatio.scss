@@ -72,13 +72,13 @@
             width: 0;
             height: 100%;
             @include p-absolute;
-            animation: animRange 0.5s both ease;
             border-radius: $bd-radius-6;
             background: $primary-color-5;
+            animation: fPopulatAnimRange 1.5s both ease;
         }
-        @keyframes animRange {
-            100%{
-                
+        @keyframes fPopulatAnimRange {
+            100% {
+                width: 57%;
             }
         }
     }

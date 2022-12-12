@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiFillCaretUp } from 'react-icons/ai';
 import "./DailyPopularPlaces.scss";
 
-export default function DailyPopularPlaces() {
+export default function DailyPopularPlaces({ setPopularName }) {
     const [actItem, setActItem] = useState(1)
     const arr = [
         { id: 1, name: "옥천계곡", percentage: 13 },
@@ -18,7 +18,7 @@ export default function DailyPopularPlaces() {
                 <ul className="dailyPP__list">
                     {arr.map(item => (
                         <li className={`dailyPP__item ${actItem === item.id ? "dailyPPAct" : ""}`}
-                            onClick={() => setActItem(item.id)}
+                            onClick={() => (setActItem(item.id), setPopularName(item.name))}
                             key={item.id}
                         >
                             <p className="dailyPP__num">{item.id}위</p>
