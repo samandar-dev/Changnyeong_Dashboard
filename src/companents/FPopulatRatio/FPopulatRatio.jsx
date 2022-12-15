@@ -1,6 +1,6 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide';
 import React, { useState } from 'react';
 import { AiFillCaretUp } from 'react-icons/ai';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import "./FPopulatRatio.scss";
 
 export default function FPopulatRatio({ setPopularName }) {
@@ -44,8 +44,8 @@ export default function FPopulatRatio({ setPopularName }) {
                     >
                         {arr.map(item => (
                             <SplideSlide key={item.id}>
-                                <li className={`fPopulat__item ${epolulatActItem === item.id ? "fPopulatAct" : ""}`}
-                                    onClick={() => (setEpolulatActItem(item.id), setPopularName(item.name))}
+                                <li className={`fPopulat__item ${+localStorage.getItem('Fpopulat_item-ID') === item.id ? "fPopulatAct" : ""}`}
+                                    onClick={() => (setEpolulatActItem(item.id), localStorage.setItem('Fpopulat_item-ID', item.id), setPopularName(item.name))}
                                 >
                                     <div className="fPopulat__item-info">
                                         <p className='fPopulat__item-num'>{item.id}위</p>

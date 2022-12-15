@@ -65,8 +65,8 @@ export default function WeeklyTopSpots({ setPopularName }) {
                     >
                         {arr.map(item => (
                             <SplideSlide key={item.id}>
-                                <li className={`week-spots__item ${item.id === weekSpotsActItem ? "weekSpotsActItem" : ""}`}
-                                    onClick={() => (setWeekSpotsActItem(item.id), setPopularName(item.name))}
+                                <li className={`week-spots__item ${item.id === +localStorage.getItem('week-spots-item-ID') ? "weekSpotsActItem" : ""}`}
+                                    onClick={() => (setWeekSpotsActItem(item.id), localStorage.setItem('week-spots-item-ID', item.id), setPopularName(item.name))}
                                 >
                                     <span className='week-spots__item-icon'>
                                         <img src={item.iconID} alt={item.name} />

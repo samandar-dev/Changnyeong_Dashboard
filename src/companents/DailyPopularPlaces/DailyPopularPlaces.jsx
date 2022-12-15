@@ -38,8 +38,8 @@ export default function DailyPopularPlaces({ test, setPopularName }) {
                     >
                         {arr.map(item => (
                             <SplideSlide key={item.id}>
-                                <li className={`dailyPP__item ${actItem === item.id ? "dailyPPAct" : ""}`}
-                                    onClick={() => (setActItem(item.id), setPopularName(item.name))}
+                                <li className={`dailyPP__item ${+localStorage.getItem('daily-popular-places-ID') === item.id ? "dailyPPAct" : ""}`}
+                                    onClick={() => (setActItem(item.id), localStorage.setItem('daily-popular-places-ID', item.id), setPopularName(item.name))}
                                 >
                                     <p className="dailyPP__num">{item.id}위</p>
                                     <p className="dailyPP__name">{item.name}</p>

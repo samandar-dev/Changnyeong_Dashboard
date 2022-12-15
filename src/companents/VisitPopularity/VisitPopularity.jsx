@@ -5,6 +5,7 @@ import './VisitPopularity.scss';
 export default function VisitPopularity({ popularName }) {
     const [minut, setMinut] = useState(new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes())
     const [refreshTime, setRefreshTime] = useState(new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours())
+    const [sercunds, setSecunds] = useState(new Date().getSeconds() < 10 ? '0' + new Date().getSeconds() : new Date().getSeconds())
 
     setInterval(() => {
         window.location.reload()
@@ -13,7 +14,7 @@ export default function VisitPopularity({ popularName }) {
     return (
         <>
             <section className='visit-popular'>
-                <p className="visit-popular__time">{refreshTime + ":" + minut + ":" + new Date().getSeconds()} 기준 <span><GiBackwardTime /></span></p>
+                <p className="visit-popular__time">{refreshTime + ":" + minut + ":" + sercunds} 기준 <span><GiBackwardTime /></span></p>
 
                 <ul className="visit-popular__info-list">
                     <li className="visit-popular__info-item">

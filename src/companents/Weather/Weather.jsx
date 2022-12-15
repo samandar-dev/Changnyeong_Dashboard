@@ -55,7 +55,7 @@ export default function Weather() {
       setHumidity(data.main.humidity)
     })
   }, [])
-
+ 
   return (
     <>
       <section className="weather">
