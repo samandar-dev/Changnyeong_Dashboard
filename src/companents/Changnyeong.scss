@@ -24,6 +24,8 @@
     top: 0;
     right: 0;
     width: 455px;
+    z-index: 5;
+    transition: all 0.3s ease;
   }
   &__map,
   &__right,

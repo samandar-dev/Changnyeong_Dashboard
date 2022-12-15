@@ -30,6 +30,7 @@
         width: 220px;
         height: 110px;
         margin: 0 7px;
+        padding: 10px;
         position: relative;
         @include fl-center;
         flex-direction: column;
@@ -37,6 +38,9 @@
         background: $primary-color-3;
         &:nth-child(2) {
             background: $primary-color-4;
+            h4{
+                font-size: 26px;
+            }
         }
         p {
             font-size: 18px;

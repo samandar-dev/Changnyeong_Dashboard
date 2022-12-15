@@ -1,13 +1,21 @@
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 import React, { useState } from 'react';
 import { AiFillCaretUp } from 'react-icons/ai';
 import "./DailyPopularPlaces.scss";
 
-export default function DailyPopularPlaces({ setPopularName }) {
+export default function DailyPopularPlaces({test, setPopularName }) {
     const [actItem, setActItem] = useState(1)
     const arr = [
         { id: 1, name: "옥천계곡", percentage: 13 },
         { id: 2, name: "관룡사", percentage: 6 },
         { id: 3, name: "창녕스포츠파크", percentage: 22 },
+        { id: 4, name: "옥천계곡", percentage: 13 },
+        { id: 5, name: "관룡사", percentage: 6 },
+        { id: 6, name: "창녕스포츠파크", percentage: 22 },
+        { id: 7, name: "옥천계곡", percentage: 13 },
+        { id: 8, name: "관룡사", percentage: 6 },
+        { id: 9, name: "창녕스포츠파크", percentage: 22 },
+        { id: 10, name: "옥천계곡", percentage: 13 },
     ]
 
     return (
@@ -16,18 +24,28 @@ export default function DailyPopularPlaces({ setPopularName }) {
                 <h3 className="dailyPP__title">일간 인기 관광지</h3>
 
                 <ul className="dailyPP__list">
-                    {arr.map(item => (
-                        <li className={`dailyPP__item ${actItem === item.id ? "dailyPPAct" : ""}`}
-                            onClick={() => (setActItem(item.id), setPopularName(item.name))}
-                            key={item.id}
-                        >
-                            <p className="dailyPP__num">{item.id}위</p>
-                            <p className="dailyPP__name">{item.name}</p>
-                            <p className='dailyPP__percentage'>
-                                <span><AiFillCaretUp /></span> {item.percentage}%
-                            </p>
-                        </li>
-                    ))}
+                    <Splide
+                        aria-label="My Favorite Images"
+                        options={{
+                            rewind: true, perPage: 3,
+                            direction: 'ttb',
+                            height: '10rem',
+                        }}
+                    >
+                        {arr.map(item => (
+                            <SplideSlide key={item.id}>
+                                <li className={`dailyPP__item ${actItem === item.id ? "dailyPPAct" : ""}`}
+                                    onClick={() => (setActItem(item.id), setPopularName(item.name))}
+                                >
+                                    <p className="dailyPP__num">{item.id}위</p>
+                                    <p className="dailyPP__name">{item.name}</p>
+                                    <p className='dailyPP__percentage'>
+                                        <span><AiFillCaretUp /></span> {item.percentage}%
+                                    </p>
+                                </li>
+                            </SplideSlide>
+                        ))}
+                    </Splide>
                 </ul>
             </section>
         </>

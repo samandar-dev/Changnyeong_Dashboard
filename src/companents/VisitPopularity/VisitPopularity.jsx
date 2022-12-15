@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GiBackwardTime } from 'react-icons/gi';
 import './VisitPopularity.scss';
 
-export default function VisitPopularity({popularName}) {
+export default function VisitPopularity({ popularName }) {
+    const [minut, setMinut] = useState(new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes())
+    const [refreshTime, setRefreshTime] = useState(new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours())
+
+    setInterval(() => {
+        window.location.reload()
+    }, 60000 * 5);
+
     return (
         <>
             <section className='visit-popular'>
-                <p className="visit-popular__time">15:45:00 기준 <span><GiBackwardTime /></span></p>
-                
+                <p className="visit-popular__time">{refreshTime + ":" + minut + ":" + new Date().getSeconds()} 기준 <span><GiBackwardTime /></span></p>
+
                 <ul className="visit-popular__info-list">
                     <li className="visit-popular__info-item">
                         <p>현재 총 방문객 수</p>

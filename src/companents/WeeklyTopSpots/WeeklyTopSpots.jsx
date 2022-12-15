@@ -19,13 +19,31 @@ import icon13 from "../../assets/icons/icon-13.svg";
 import icon14 from "../../assets/icons/icon-14.svg";
 import icon15 from "../../assets/icons/icon-15.svg";
 import icon16 from "../../assets/icons/icon-16.svg";
+import Slider from 'react-slick';
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+// Default theme
+import '@splidejs/react-splide/css';
 
-export default function WeeklyTopSpots({setPopularName}) {
+// or other themes
+import '@splidejs/react-splide/css/skyblue';
+import '@splidejs/react-splide/css/sea-green';
+
+// or only core styles
+import '@splidejs/react-splide/css/core';
+
+export default function WeeklyTopSpots({ setPopularName }) {
     const [weekSpotsActItem, setWeekSpotsActItem] = useState(1)
     const arr = [
         { id: 1, name: "옥천계곡", percentage: 38, iconID: icon11 },
         { id: 2, name: "부곡온천", percentage: 38, iconID: icon15 },
         { id: 3, name: "관룡사", percentage: 38, iconID: icon9 },
+        { id: 4, name: "옥천계곡", percentage: 38, iconID: icon11 },
+        { id: 5, name: "부곡온천", percentage: 38, iconID: icon15 },
+        { id: 6, name: "관룡사", percentage: 38, iconID: icon9 },
+        { id: 7, name: "옥천계곡", percentage: 38, iconID: icon11 },
+        { id: 8, name: "부곡온천", percentage: 38, iconID: icon15 },
+        { id: 9, name: "관룡사", percentage: 38, iconID: icon9 },
+        { id: 10, name: "옥천계곡", percentage: 38, iconID: icon11 },
     ]
 
     return (
@@ -34,21 +52,27 @@ export default function WeeklyTopSpots({setPopularName}) {
                 <h3 className="week-spots__title">주간 인기 관광지</h3>
 
                 <ul className="week-spots__list">
-                    {arr.map(item => (
-                        <li className={`week-spots__item ${item.id === weekSpotsActItem ? "weekSpotsActItem" : ""}`}
-                            onClick={() => (setWeekSpotsActItem(item.id), setPopularName(item.name))}
-                            key={item.id}
-                        >
-                            <span className='week-spots__item-icon'>
-                                <img src={item.iconID} alt={item.name} />
-                            </span>
-                            <p className="week-spots__item-num">{item.id}위</p>
-                            <h4 className="week-spots__item-name">{item.name}</h4>
-                            <p className="week-spots__item-percentage">
-                                <span><AiFillCaretUp /></span> {item.percentage}%
-                            </p>
-                        </li>
-                    ))}
+                    <Splide
+                        aria-label="My Favorite Images"
+                        options={{ rewind: true, perPage: 3, }}
+                    >
+                        {arr.map(item => (
+                            <SplideSlide key={item.id}>
+                                <li className={`week-spots__item ${item.id === weekSpotsActItem ? "weekSpotsActItem" : ""}`}
+                                    onClick={() => (setWeekSpotsActItem(item.id), setPopularName(item.name))}
+                                >
+                                    <span className='week-spots__item-icon'>
+                                        <img src={item.iconID} alt={item.name} />
+                                    </span>
+                                    <p className="week-spots__item-num">{item.id}위</p>
+                                    <h4 className="week-spots__item-name">{item.name}</h4>
+                                    <p className="week-spots__item-percentage">
+                                        <span><AiFillCaretUp /></span> {item.percentage}%
+                                    </p>
+                                </li>
+                            </SplideSlide>
+                        ))}
+                    </Splide>
                 </ul>
             </section>
         </>

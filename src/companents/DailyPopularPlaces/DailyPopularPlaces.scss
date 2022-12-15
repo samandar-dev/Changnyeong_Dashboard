@@ -4,9 +4,10 @@
     width: 100%;
     height: auto;
     position: relative;
-    padding: 20px 24px 22px;
+    // padding: 20px 24px 22px;
     border-radius: $bd-radius-3;
     background: $primary-color-2;
+    overflow: visible !important;
     margin-bottom: 12px;
     &__title {
         color: $white;
@@ -15,22 +16,20 @@
         line-height: 25px;
         font-family: $font-family-1;
         margin-bottom: 14px;
+        padding: 20px 24px;
+        padding-bottom: 0;
     }
     &__item {
         width: 100%;
-        @include flex;
         cursor: pointer;
-        margin-bottom: 10px;
         box-shadow: $b-shadow-1;
+        display: flex !important;
         transition: all 0.15s ease;
         border-radius: $bd-radius-2;
         background: $primary-color-17;
+        align-items: center !important;
         border: 1px solid $primary-color-18;
-        padding: 12px 22px 12px 18px;
-        margin-bottom: 10px;
-        &:last-child {
-            margin: 0;
-        }
+        padding: 11px 22px 11px 18px;
     }
     &__num {
         margin-right: 42px;
@@ -53,9 +52,28 @@
         color: $primary-color-9;
         font-family: $font-family-1;
     }
+    .splide {
+        padding: 0 !important;
+        width: 100% !important;
+        overflow: visible !important;
+        padding-bottom: 20px !important;
+        .splide__arrow,
+        .splide__pagination {
+            display: none !important;
+        }
+        .splide__slide {
+            margin-bottom: 9px;
+            height: auto !important;
+            overflow: visible !important;
+        }
+    }
+    .splide__track {
+        padding-top: 0;
+        padding: 20px 24px;
+        height: 160px !important;
+    }
 }
 .dailyPPAct {
-    padding: 12px 22px 12px 18px;
     p,
     span {
         color: #16f0f0;

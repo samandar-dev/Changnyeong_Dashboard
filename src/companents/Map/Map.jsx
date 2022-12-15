@@ -1,30 +1,8 @@
-import { useState } from 'react';
-import React, { useEffect } from 'react';
+import React from 'react';
 import map from "../../assets/images/map.png";
-import ItemInfoModal from '../ItemInfoModal/ItemInfoModal';
 import "./Map.scss";
 
-export default function Map({ date, mapItemIDAct, setMapItemIDAct }) {
-    const [datee, setDate] = useState([])
-    const [notInfoAct, setNotInfoAct] = useState(0)
-
-    // useEffect(() => {
-    //     fetch('http://demo.entermediasoftware.com/media/services/rest/listcatalogs.xml', {
-    //         method: 'GET',
-    //     })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             console.log(data);
-    //         })
-    //         .catch((error) => {
-    //             console.error(error);
-    //         });
-    // }, [datee])
-
-    useEffect(() => {
-        setTimeout(() => { setNotInfoAct(0) }, 150)
-    }, [notInfoAct])
-
+export default function Map({ date, setMapItemIDAct, setNotInfoAct }) {
     return (
         <>
             <section className="map">
@@ -32,28 +10,35 @@ export default function Map({ date, mapItemIDAct, setMapItemIDAct }) {
 
                 <div className="map__info">
                     <ul className="map__info-list">
-                        {date.map(item => (
+                        {date !== undefined ? date.map(item => (
                             <li className="map__info-item" key={item.id}>
                                 <div className="map__info-item-zona">
                                     <span className='map__info-item-line'></span>
-                                    <span className={`map__info-item-metka ${item.id === mapItemIDAct ? "mapAnimMetka" : ""}`}>
+                                    <span className={`map__info-item-metka ${item.id === +localStorage.getItem('itemID') ? "mapAnimMetka" : ""}`}>
                                         <span></span>
                                         <span></span>
                                     </span>
                                 </div>
 
-                                <div className={`map__info-item-box ${item.id === mapItemIDAct ? "mapItemAct" : notInfoAct === item.id ? "notInfoAct" : ""}`}
-                                    onClick={() => item.users_count > 0 ? (setMapItemIDAct(item.id), setNotInfoAct(item.id)) : setNotInfoAct(item.id)}
+                                <div className={`map__info-item-box ${item.id === +localStorage.getItem('itemID') ? "mapItemAct" : ""}`}
+                                    onClick={() => (
+                                        setMapItemIDAct(item.id),
+                                        localStorage.setItem('itemID', item.id),
+                                        setNotInfoAct(item.users_count === 0
+                                            ? (item.id, localStorage.setItem('count_0_itemID', item.id))
+                                            : localStorage.setItem('count_0_itemID', 0))
+                                    )}
                                 >
                                     <p className="map__info-item-name">{item.name}</p>
 
                                     <div className="map__info-item-count-range">
                                         <p className='map__info-item-count'
                                             style={{
-                                                color: `${item.users_count <= 0 ? "#fff" :
-                                                    item.users_count < 5 ? "#4DA9FF" :
-                                                        item.users_count < 35 ? "#46D085" :
-                                                            item.users_count < 50 ? "#EE8E1D" : "#DD4F4F"}`
+                                                color: `${item.id === +localStorage.getItem('count_0_itemID') ? "#020202" :
+                                                    item.users_count <= 0 ? "#fff" :
+                                                        item.users_count < 5 ? "#4DA9FF" :
+                                                            item.users_count < 35 ? "#46D085" :
+                                                                item.users_count < 50 ? "#EE8E1D" : "#DD4F4F"}`
                                             }}>{item.users_count}명
                                         </p>
 
@@ -74,7 +59,7 @@ export default function Map({ date, mapItemIDAct, setMapItemIDAct }) {
                                     </div>
                                 </div>
                             </li>
-                        ))}
+                        )) : ""}
                     </ul>
                 </div>
             </section>

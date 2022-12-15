@@ -27,15 +27,6 @@
         cursor: pointer;
         position: relative;
         margin-bottom: 14px;
-        &:last-child {
-            margin: 0;
-        }
-        &:nth-child(2) .fPopulat__item-range span {
-            background: $primary-color-7;
-        }
-        &:nth-child(3) .fPopulat__item-range span {
-            background: $primary-color-8;
-        }
     }
     &__item-info {
         @include flex;
@@ -81,6 +72,33 @@
                 width: 57%;
             }
         }
+    }
+    .splide {
+        padding: 0 !important;
+        width: 100% !important;
+        overflow: visible !important;
+        .splide__arrow,
+        .splide__pagination {
+            display: none !important;
+        }
+        .splide__slide {
+            margin-bottom: 14px;
+            height: auto !important;
+            overflow: visible !important;
+
+            &:last-child li{
+                margin: 0;
+            }
+            &:nth-child(2n)li .fPopulat__item-range span {
+                background: $primary-color-7;
+            }
+            &:nth-child(3n)li .fPopulat__item-range span {
+                background: $primary-color-8;
+            }
+        }
+    }
+    .splide__track {
+        height: 135px !important;
     }
 }
 .fPopulatAct {

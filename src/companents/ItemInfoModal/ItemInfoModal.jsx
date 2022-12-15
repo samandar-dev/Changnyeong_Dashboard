@@ -1,36 +1,39 @@
+import { useState } from 'react';
 import React, { useEffect } from 'react';
 import { RxStack } from 'react-icons/rx';
 import { TbPhoneCall } from 'react-icons/tb';
+import { AiFillCaretUp } from 'react-icons/ai';
+import userIcon2 from "../../assets/icons/user-three.svg";
+import userIcon1 from "../../assets/icons/user-switch.svg";
 import { AiOutlineExclamationCircle } from 'react-icons/ai';
 import { IoClose, IoChevronDownOutline } from 'react-icons/io5';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import "./ItemInfoModal.scss";
 
-import userIcon1 from "../../assets/icons/user-switch.svg";
-import userIcon2 from "../../assets/icons/user-three.svg";
-import { useState } from 'react';
-
-export default function ItemInfoModal({ date, mapItemIDAct, setMapItemIDAct }) {
+export default function ItemInfoModal({ date ,setMapItemIDAct, setNotInfoAct }) {
     const [rotateAccardIcon, setRotateAccardIcon] = useState(false)
-    const [removModal, setRemovModal] = useState(false)
     const [privTimesItem, setPrivTimesItem] = useState(1)
+    const [removModal, setRemovModal] = useState(false)
     const tableLine = [300, 200, 150, 100, 50, 30]
-
-    useEffect(() => {
-        setTimeout(() => {
-            setMapItemIDAct(0)
-            setRemovModal(false)
-        }, 200)
-    }, [removModal])
 
     return (
         <>
-            {date.map(item => (
-                item.id === mapItemIDAct ?
+            {date !== undefined ? date.map(item => (
+                item.id === +localStorage.getItem('itemID') ?
                     <section className={`infoModal ${removModal ? "removModal" : ""}`}>
                         <div className="infoModal__top">
                             <h3 className="infoModal__title">{item.name} <span>창녕군 이방면 이방로 623</span></h3>
-                            <button className='infoModal__top-remove' onClick={() => setRemovModal(true)}>
+                            <button className='infoModal__top-remove'
+                                onClick={() => (
+                                    setRemovModal(true),
+                                    setTimeout(() => {
+                                        setNotInfoAct(0)
+                                        setMapItemIDAct(0)
+                                        localStorage.setItem('itemID', 0)
+                                        localStorage.setItem('count_0_itemID', 0)
+                                        setRemovModal(false)
+                                    }, 300))}
+                            >
                                 <IoClose />
                             </button>
                         </div>
@@ -49,7 +52,7 @@ export default function ItemInfoModal({ date, mapItemIDAct, setMapItemIDAct }) {
                                         </div>
                                     </AccordionSummary>
                                     <AccordionDetails className='infoModal__accard-desc'>
-                                        <Typography>
+                                        <Typography className='infoModal__accard-item'>
                                             <p className='infoModal__accard-text'>{item.text}</p>
 
                                             <ul className="infoModal__accard-desc-list">
@@ -70,7 +73,10 @@ export default function ItemInfoModal({ date, mapItemIDAct, setMapItemIDAct }) {
                             <div className="infoModal__dash">
                                 <div className="infoModal__dash-top">
                                     <h4 className='infoModal__dash-title'>유동인구 수 <span><AiOutlineExclamationCircle /></span></h4>
-                                    <p className='infoModal__dash-date-time'>2022.11.21 15:43 기준</p>
+                                    <p className='infoModal__dash-date-time'>
+                                        {new Date().getFullYear() + "." + new Date().getMonth() + "." + new Date().getDate()}
+                                        {" " + (new Date().getHours() < 10 ? '0' + new Date().getHours() : new Date().getHours()) + ":" + (new Date().getMinutes() < 10 ? '0' + new Date().getMinutes() : new Date().getMinutes())} 기준
+                                    </p>
                                 </div>
 
                                 <div className="infoModal__dash-table">
@@ -96,14 +102,16 @@ export default function ItemInfoModal({ date, mapItemIDAct, setMapItemIDAct }) {
                                                     className={`infoModal__dash-info-item ${privTimesItem === timesItem.timeID ? "dashItemAct" : ""}`}
                                                     key={timesItem.timeID}
                                                 >
-                                                    <div className="infoModal__dash-info-rating" onClick={() => setPrivTimesItem(timesItem.timeID)}>
+                                                    <div className="infoModal__dash-info-rating"
+                                                        onClick={() => setPrivTimesItem(timesItem.timeID)}
+                                                    >
+                                                        <div className="infoModal__dash-info-rating-box">
+                                                            <span className='infoModal__dash-info-line'></span>
+                                                            <p className='infoModal__dash-info-rating-count'>{timesItem.time_user_count}명</p>
+                                                            <p className="infoModal__dash-info-rating-data-time">10월 12일 11:00</p>
+                                                        </div>
                                                     </div>
-                                                    <div className="infoModal__dash-info-rating-box">
-                                                        <span className='infoModal__dash-info-line'></span>
-                                                        <p className='infoModal__dash-info-rating-count'>{timesItem.time_user_count}명</p>
-                                                        <p className="infoModal__dash-info-rating-data-time">10월 12일 11:00</p>
-                                                    </div>
-                                                    <p className="infoModal__dash-info-categor">10분 전</p>
+                                                    <p className="infoModal__dash-info-categor">{timesItem.at_this_time}분 전</p>
                                                 </li>
                                             ))}
                                         </ul>
@@ -166,11 +174,11 @@ export default function ItemInfoModal({ date, mapItemIDAct, setMapItemIDAct }) {
                                     <ul className="infoModal__desc-info-list">
                                         <li className="infoModal__desc-info-item">
                                             <p>1시간 전 대비 증감율</p>
-                                            <span>{item.rate_of_change_1_hour_ago}%</span>
+                                            <span><span><AiFillCaretUp /></span> {item.rate_of_change_1_hour_ago}%</span>
                                         </li>
                                         <li className="infoModal__desc-info-item">
                                             <p>최근 7일 동시간 평균 대비 증감율</p>
-                                            <span>{item.rate_of_change_over_the_last_7_days}%</span>
+                                            <span><span><AiFillCaretUp /></span> {item.rate_of_change_over_the_last_7_days}%</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -205,7 +213,8 @@ export default function ItemInfoModal({ date, mapItemIDAct, setMapItemIDAct }) {
                         </div>
                     </section>
                     : ""
-            ))}
+            )) : ""
+            }
         </>
     )
 }
