@@ -56,7 +56,6 @@ export default function WeeklyTopSpots({ setPopularName }) {
                         aria-label="My Favorite Images"
                         options={{
                             perPage: 3,
-                            type: 'loop',
                             rewind: true,
                             delay: '200',
                             speed: '3000',

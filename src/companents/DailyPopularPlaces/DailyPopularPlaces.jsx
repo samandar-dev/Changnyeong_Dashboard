@@ -28,7 +28,6 @@ export default function DailyPopularPlaces({ test, setPopularName }) {
                         aria-label="My Favorite Images"
                         options={{
                             perPage: 1,
-                            type: 'loop',
                             rewind: true,
                             speed: '2000',
                             interval: 3000,
