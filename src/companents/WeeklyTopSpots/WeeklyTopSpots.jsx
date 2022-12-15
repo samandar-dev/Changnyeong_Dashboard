@@ -43,7 +43,7 @@ export default function WeeklyTopSpots({ setPopularName }) {
         { id: 7, name: "옥천계곡", percentage: 38, iconID: icon11 },
         { id: 8, name: "부곡온천", percentage: 38, iconID: icon15 },
         { id: 9, name: "관룡사", percentage: 38, iconID: icon9 },
-        { id: 10, name: "옥천계곡", percentage: 38, iconID: icon11 },
+        { id: 10, name: "옥천계곡", percentage: 38, iconID: icon15 },
     ]
 
     return (
@@ -54,7 +54,15 @@ export default function WeeklyTopSpots({ setPopularName }) {
                 <ul className="week-spots__list">
                     <Splide
                         aria-label="My Favorite Images"
-                        options={{ rewind: true, perPage: 3, }}
+                        options={{
+                            perPage: 3,
+                            type: 'loop',
+                            rewind: true,
+                            delay: '200',
+                            speed: '3000',
+                            autoplay: true,
+                            interval: 2800
+                        }}
                     >
                         {arr.map(item => (
                             <SplideSlide key={item.id}>

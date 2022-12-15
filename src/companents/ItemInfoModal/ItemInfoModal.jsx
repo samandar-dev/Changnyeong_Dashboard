@@ -10,7 +10,7 @@ import { IoClose, IoChevronDownOutline } from 'react-icons/io5';
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from '@mui/material';
 import "./ItemInfoModal.scss";
 
-export default function ItemInfoModal({ date ,setMapItemIDAct, setNotInfoAct }) {
+export default function ItemInfoModal({ date, setMapItemIDAct, setNotInfoAct }) {
     const [rotateAccardIcon, setRotateAccardIcon] = useState(false)
     const [privTimesItem, setPrivTimesItem] = useState(1)
     const [removModal, setRemovModal] = useState(false)
@@ -65,6 +65,8 @@ export default function ItemInfoModal({ date ,setMapItemIDAct, setNotInfoAct }) 
                                                     <p>{item.area}</p>
                                                 </li>
                                             </ul>
+
+                                            <p className='infoModal__dash-info-source'>출처 : 창녕군청 홈페이지</p>
                                         </Typography>
                                     </AccordionDetails>
                                 </Accordion>
@@ -117,8 +119,6 @@ export default function ItemInfoModal({ date ,setMapItemIDAct, setNotInfoAct }) 
                                         </ul>
                                     </div>
                                 </div>
-
-                                <p className='infoModal__dash-info-source'>출처 : 창녕군청 홈페이지</p>
                             </div>
 
                             <div className="infoModal__range">

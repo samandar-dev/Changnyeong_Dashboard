@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { AiFillCaretUp } from 'react-icons/ai';
 import "./DailyPopularPlaces.scss";
 
-export default function DailyPopularPlaces({test, setPopularName }) {
+export default function DailyPopularPlaces({ test, setPopularName }) {
     const [actItem, setActItem] = useState(1)
     const arr = [
         { id: 1, name: "옥천계곡", percentage: 13 },
@@ -27,9 +27,14 @@ export default function DailyPopularPlaces({test, setPopularName }) {
                     <Splide
                         aria-label="My Favorite Images"
                         options={{
-                            rewind: true, perPage: 3,
-                            direction: 'ttb',
+                            perPage: 1,
+                            type: 'loop',
+                            rewind: true,
+                            speed: '2000',
+                            interval: 3000,
+                            autoplay: true,
                             height: '10rem',
+                            direction: 'ttb',
                         }}
                     >
                         {arr.map(item => (

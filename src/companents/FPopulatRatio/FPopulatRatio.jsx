@@ -33,9 +33,14 @@ export default function FPopulatRatio({ setPopularName }) {
                     <Splide
                         aria-label="My Favorite Images"
                         options={{
-                            rewind: true, perPage: 3,
-                            direction: 'ttb',
+                            perPage: 1,
+                            type: 'loop',
+                            rewind: true,
+                            speed: '2000',
+                            interval: 3000,
+                            autoplay: true,
                             height: '10rem',
+                            direction: 'ttb',
                         }}
                     >
                         {arr.map(item => (

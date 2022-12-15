@@ -9,6 +9,7 @@ import weaterIcon6 from "../../assets/icons/weather-icon-6.svg";
 import weaterIcon7 from "../../assets/icons/weather-icon-7.svg";
 import weaterIcon8 from "../../assets/icons/weather-icon-8.svg";
 import "./Weather.scss";
+import axios from 'axios';
 
 export default function Weather() {
   const weatherCategor = [
@@ -26,10 +27,11 @@ export default function Weather() {
     { id: 12, categor: 'Mist', icon: weaterIcon8 },
     { id: 12, categor: 'More cloudy', icon: weaterIcon4 },
   ]
+  const [humidity, setHumidity] = useState(10)
   const [weatherMain, setWeatherMain] = useState()
   const [weatherGradus, setWeatherGradus] = useState(2.5)
-  const [humidity, setHumidity] = useState(10)
   const [iconIndex, setIconIndex] = useState(weaterIcon2);
+  const [xml, setXML] = useState('');
 
   const weatherHandler = () => {
     if (weatherMain !== []) {
@@ -45,12 +47,21 @@ export default function Weather() {
   }, [iconIndex, weatherMain])
 
   useEffect(() => {
+    // axios.get('https://www.cng.go.kr/country/api/curweather.do', {
+    //     "Content-Type": "application/xml; charset=utf-8"
+    // })
+    //     .then((response) => {
+    //         console.log('Your xml file as string', response.data);
+    //         setXML(response)
+    //     });
+
     fetch('https://api.openweathermap.org/data/2.5/weather?q=Korea&units=metric&appid=33dedde6287575d237be2e1c44271762')
       .then(res => res.json())
       .then(data => {
         setWeatherMain(data.weather[0].main)
         setWeatherGradus(data.main.temp)
         setHumidity(data.main.humidity)
+        console.log(data);
       })
   }, [])
 
