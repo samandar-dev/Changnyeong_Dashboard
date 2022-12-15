@@ -47,22 +47,13 @@ export default function Weather() {
   }, [iconIndex, weatherMain])
 
   useEffect(() => {
-    // axios.get('https://www.cng.go.kr/country/api/curweather.do', {
-    //     "Content-Type": "application/xml; charset=utf-8"
-    // })
-    //     .then((response) => {
-    //         console.log('Your xml file as string', response.data);
-    //         setXML(response)
-    //     });
-
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=Korea&units=metric&appid=33dedde6287575d237be2e1c44271762')
-      .then(res => res.json())
-      .then(data => {
-        setWeatherMain(data.weather[0].main)
-        setWeatherGradus(data.main.temp)
-        setHumidity(data.main.humidity)
-        console.log(data);
-      })
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=Gyeongsangnam-do&units=metric&appid=33dedde6287575d237be2e1c44271762')
+    .then(res => res.json())
+    .then(data => {
+      setWeatherMain(data.weather[0].main)
+      setWeatherGradus(data.main.temp)
+      setHumidity(data.main.humidity)
+    })
   }, [])
 
   return (
