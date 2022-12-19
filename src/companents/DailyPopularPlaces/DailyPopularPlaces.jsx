@@ -16,6 +16,12 @@ export default function DailyPopularPlaces({ test, setPopularName }) {
         { id: 8, name: "관룡사", percentage: 6 },
         { id: 9, name: "창녕스포츠파크", percentage: 22 },
         { id: 10, name: "옥천계곡", percentage: 13 },
+        { id: 11, name: "관룡사", percentage: 6 },
+        { id: 12, name: "창녕스포츠파크", percentage: 22 },
+        { id: 13, name: "옥천계곡", percentage: 13 },
+        { id: 14, name: "관룡사", percentage: 6 },
+        { id: 15, name: "창녕스포츠파크", percentage: 22 },
+        { id: 16, name: "옥천계곡", percentage: 13 },
     ]
 
     return (
@@ -29,7 +35,8 @@ export default function DailyPopularPlaces({ test, setPopularName }) {
                         options={{
                             perPage: 1,
                             rewind: true,
-                            speed: '2000',
+                            type: 'loop',
+                            speed: '1000',
                             interval: 3000,
                             autoplay: true,
                             height: '10rem',

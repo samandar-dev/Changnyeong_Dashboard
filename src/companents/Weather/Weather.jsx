@@ -53,6 +53,7 @@ export default function Weather() {
       setWeatherMain(data.weather[0].main)
       setWeatherGradus(data.main.temp)
       setHumidity(data.main.humidity)
+      console.log(data);
     })
   }, [])
  
@@ -67,7 +68,7 @@ export default function Weather() {
             <p className="weather__value">{weatherGradus}˚</p>
           </li>
           <li className="weather__item">
-            <span className='weather__name'>강수확률</span>
+            <span className='weather__name'>습도</span>
             <p className="weather__value">{humidity}%</p>
           </li>
           <li className="weather__item">
