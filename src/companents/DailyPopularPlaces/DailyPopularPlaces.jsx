@@ -50,7 +50,7 @@ export default function DailyPopularPlaces({ test, setPopularName }) {
                 <h3 className="dailyPP__title">일간 인기 관광지</h3>
 
                 <div className="dailyPP__slid">
-                    <Splide
+                    {/* <Splide
                         aria-label="My Favorite Images"
                         ref={itemActRef}
                         options={{
@@ -62,9 +62,10 @@ export default function DailyPopularPlaces({ test, setPopularName }) {
                             autoplay: true,
                             height: '10rem',
                             direction: 'ttb',
-                        }}>
-                        {arr.map(item => (
-                            <SplideSlide key={item.id}
+                        }}> */}
+                    {arr.map((item, inx) => (
+                        inx+1 <= 3 ?
+                            <li key={item.id}
                                 className={`dailyPP__item ${item.id === actItem ? "dailyPPAct" : ""}`}
                                 onClick={() => (setActItem(item.id), setPopularName(item.name))}
                             >
@@ -76,9 +77,9 @@ export default function DailyPopularPlaces({ test, setPopularName }) {
                                     `}>
                                     <span><AiFillCaretUp /></span> {item.percentage}%
                                 </p>
-                            </SplideSlide>
-                        ))}
-                    </Splide>
+                            </li> : ""
+                    ))}
+                    {/* </Splide> */}
                 </div>
             </section>
         </>
