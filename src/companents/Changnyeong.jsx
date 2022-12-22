@@ -360,26 +360,11 @@ export default function Changnyeong() {
   ])
   const [test, setTest] = useState(arr)
 
-  const mapFeatch = useCallback(
-    async () => {
-      try {
-        const map = await GET.markaCarsGet();
-        setArr(map)
-      } catch (err) {
-        console.log(err);
-      }
-    },
-  );
-
   // setInterval(() => {
   //   setTest(arr.filter(item => item.id === 2 ? item.users_count += 5 : item.users_count))
   // }, 15000);
 
   // useEffect(() => { setTest(arr) }, [test])
-
-  useEffect(() => {
-    mapFeatch()
-  }, [])
 
   return (
     <>

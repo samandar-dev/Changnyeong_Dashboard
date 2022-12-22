@@ -4,7 +4,6 @@
     width: 100%;
     height: auto;
     position: relative;
-    // padding: 20px 24px 22px;
     border-radius: $bd-radius-3;
     background: $primary-color-2;
     overflow: visible !important;
@@ -18,18 +17,6 @@
         margin-bottom: 14px;
         padding: 20px 24px;
         padding-bottom: 0;
-    }
-    &__item {
-        width: 100%;
-        cursor: pointer;
-        box-shadow: $b-shadow-1;
-        display: flex !important;
-        transition: all 0.15s ease;
-        border-radius: $bd-radius-2;
-        background: $primary-color-17;
-        align-items: center !important;
-        border: 1px solid $primary-color-18;
-        padding: 11px 22px 11px 18px;
     }
     &__num {
         margin-right: 42px;
@@ -62,13 +49,31 @@
             display: none !important;
         }
         .splide__slide {
+            width: 100%;
+            cursor: pointer;
             margin-bottom: 9px;
             height: auto !important;
-            overflow: visible !important;
+            box-shadow: $b-shadow-1;
+            display: flex !important;
+            border-radius: $bd-radius-2;
+            background: $primary-color-17;
+            align-items: center !important;
+            border: 1px solid $primary-color-18;
+            padding: 11px 22px 11px 18px;
+            p,
+            p span {
+                color: $primary-color-9;
+            }
+        }
+        .is-active {
+            border-color: #16f0f0 !important;
+            p,
+            p span {
+                color: $primary-color-5;
+            }
         }
     }
     .splide__track {
-        padding-top: 0;
         padding: 20px 24px;
         height: 160px !important;
     }

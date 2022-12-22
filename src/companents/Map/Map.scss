@@ -295,6 +295,8 @@
         padding: 10px;
         cursor: pointer;
         min-width: 125px;
+        position: relative;
+        z-index: 5;
         box-shadow: $b-shadow-3;
         transition: all 0.3s ease;
         border-radius: $bd-radius-1;

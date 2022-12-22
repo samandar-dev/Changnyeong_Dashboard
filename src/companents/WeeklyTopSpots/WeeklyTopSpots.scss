@@ -19,15 +19,6 @@
     &__list {
         @include flex;
     }
-    &__item {
-        height: auto;
-        min-width: 125px;
-        cursor: pointer;
-        position: relative;
-        @include fl-center;
-        flex-direction: column;
-        transition: all 0.15s ease;
-    }
     &__item-icon {
         width: 70px;
         height: 70px;
@@ -82,8 +73,29 @@
             display: none !important;
         }
         .splide__slide {
-            width: auto !important;
+            height: auto;
             margin: 0 5px;
+            cursor: pointer;
+            min-width: 125px;
+            position: relative;
+            @include fl-center;
+            width: auto !important;
+            flex-direction: column;
+            transition: all 0.15s ease;
+        }
+        .is-active {
+            img {
+                object-fit: cover;
+                filter: brightness(0) saturate(100%) invert(82%) sepia(32%) saturate(1162%) hue-rotate(124deg)
+                    brightness(98%) contrast(92%);
+            }
+            .week-spots__item-num {
+                background: $primary-color-5;
+            }
+            h4,
+            .week-spots__item-percentage {
+                color: $primary-color-5;
+            }
         }
     }
 }

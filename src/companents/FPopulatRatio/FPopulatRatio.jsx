@@ -1,28 +1,50 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AiFillCaretUp } from 'react-icons/ai';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import "./FPopulatRatio.scss";
 
 export default function FPopulatRatio({ setPopularName }) {
-    const [epolulatActItem, setEpolulatActItem] = useState(1)
+    const [actItem, setActItem] = useState(1)
+    const [eActItem, setEActItem] = useState(1)
     const arr = [
-        { id: 1, name: "옥천계곡", percentage: 15, prev_day_percentage: 10, },
-        { id: 2, name: "관룡사", percentage: 10, prev_day_percentage: 16, },
-        { id: 3, name: "창녕스포츠파크", percentage: 16, prev_day_percentage: 13, },
-        { id: 4, name: "옥천계곡", percentage: 15, prev_day_percentage: 5, },
-        { id: 5, name: "관룡사", percentage: 22, prev_day_percentage: 10, },
-        { id: 6, name: "창녕스포츠파크", percentage: 27, prev_day_percentage: 23, },
-        { id: 7, name: "옥천계곡", percentage: 11, prev_day_percentage: 14, },
-        { id: 8, name: "관룡사", percentage: 65, prev_day_percentage: 44, },
-        { id: 9, name: "창녕스포츠파크", percentage: 24, prev_day_percentage: 31, },
-        { id: 10, name: "창녕스포츠파크", percentage: 42, prev_day_percentage: 61, },
-        { id: 11, name: "옥천계곡", percentage: 32, prev_day_percentage: 13, },
-        { id: 12, name: "관룡사", percentage: 14, prev_day_percentage: 18, },
-        { id: 13, name: "창녕스포츠파크", percentage: 12, prev_day_percentage: 25, },
-        { id: 14, name: "옥천계곡", percentage: 15, prev_day_percentage: 33, },
-        { id: 15, name: "관룡사", percentage: 33, prev_day_percentage: 26, },
-        { id: 16, name: "창녕스포츠파크", percentage: 12, prev_day_percentage: 34, },
+        { id: 1, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 2, status: "down", name: "관룡사", percentage: 6 },
+        { id: 3, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 4, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 5, status: "down", name: "관룡사", percentage: 6 },
+        { id: 6, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 7, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 8, status: "down", name: "관룡사", percentage: 6 },
+        { id: 9, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 10, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 11, status: "down", name: "관룡사", percentage: 6 },
+        { id: 12, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 13, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 14, status: "down", name: "관룡사", percentage: 6 },
+        { id: 15, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 16, status: "down", name: "옥천계곡", percentage: 13 },
     ]
+
+    const itemActRef = useRef(null)
+
+    // ITEM ACTIVE HANDLER =====
+
+    const handlarAct = () => {
+        if (itemActRef.current !== null) {
+            itemActRef.current.slides.map(item => {
+                if (item.id === `splide03-slide${eActItem < 10 ? '0' + eActItem : eActItem}`) {
+                    item.classList.add('is-active')
+                }
+                else {
+                    item.classList.remove('is-active')
+                }
+            })
+        }
+    }
+
+    useEffect(() => {
+        handlarAct()
+    }, [eActItem])
 
     return (
         <>
@@ -44,26 +66,27 @@ export default function FPopulatRatio({ setPopularName }) {
                         }}
                     >
                         {arr.map(item => (
-                            <SplideSlide key={item.id}>
-                                <li className={`fPopulat__item ${+localStorage.getItem('Fpopulat_item-ID') === item.id ? "fPopulatAct" : ""}`}
-                                    onClick={() => (setEpolulatActItem(item.id), localStorage.setItem('Fpopulat_item-ID', item.id), setPopularName(item.name))}
-                                >
-                                    <div className="fPopulat__item-info">
-                                        <p className='fPopulat__item-num'>{item.id}위</p>
-                                        <p className="fPopulat__item-name">{item.name}</p>
-                                        <p className="fPopulat__item-percetage">
-                                            <span><AiFillCaretUp /></span> {item.percentage}%
-                                        </p>
-                                    </div>
+                            <SplideSlide key={item.id}
+                                className={`fPopulat__item ${item.id === eActItem ? "is-active" : ""}`}
+                                onClick={() => (setEActItem(item.id), setPopularName(item.name))}
+                            >
+                                <div className="fPopulat__item-info">
+                                    <p className='fPopulat__item-num'>{item.id}위</p>
+                                    <p className="fPopulat__item-name">{item.name}</p>
+                                    <p className={`fPopulat__item-percetage ${eActItem === item.id ? item.status === "down" ?
+                                        "decreasedColor" : "" : item.status === "down" ? "decreased" : ""}
+                                    `}>
+                                        <span><AiFillCaretUp /></span> {item.percentage}%
+                                    </p>
+                                </div>
 
-                                    <div className="fPopulat__item-range">
-                                        <span>
-                                            {/* <style>
+                                <div className="fPopulat__item-range">
+                                    <span>
+                                        {/* <style>
                                                 {`@keyframes fPopulatAnimRange { 100% { width: ${item.percentage}px;} }`}
                                              </style> */}
-                                        </span>
-                                    </div>
-                                </li>
+                                    </span>
+                                </div>
                             </SplideSlide>
                         ))}
                     </Splide>

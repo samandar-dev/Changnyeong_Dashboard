@@ -16,11 +16,13 @@ const DAY = `${url}/day-percent`
 const WEEK = `${url}/week-percent`
 const ALL_COUNT = `${url}/all-count`
 const CURRENT_RANGE = `${url}/current-range`
+const API_TABlE = `${url}/spots`
 
 const GET = {
   mapList: () => axios.get(MAP, headers),
   dayList: () => axios.get(DAY, headers),
   weekList: () => axios.get(WEEK, headers),
+  apiTable: () => axios.get(API_TABlE, headers),
   all_count: () => axios.get(ALL_COUNT, headers),
   current_range_List: () => axios.get(CURRENT_RANGE, headers),
 };

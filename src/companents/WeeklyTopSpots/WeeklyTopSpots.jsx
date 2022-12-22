@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AiFillCaretUp } from 'react-icons/ai';
 import "./WeeklyTopSpots.scss";
 
@@ -32,157 +31,81 @@ import '@splidejs/react-splide/css/sea-green';
 import '@splidejs/react-splide/css/core';
 
 export default function WeeklyTopSpots({ setPopularName }) {
-    const [weekSpotsActItem, setWeekSpotsActItem] = useState(1)
+    const [weekActItem, setWeekActItem] = useState(1)
+    const itemActRef = useRef(null)
     const arr = [
-        {
-            id: 1,
-            name: "옥천계곡",
-            percentage: 15,
-            prev_week_percentage: 10,
-            icon: icon1
-        },
-        {
-            id: 2,
-            name: "관룡사",
-            percentage: 10,
-            prev_week_percentage: 16,
-            icon: icon2
-        },
-        {
-            id: 3,
-            name: "창녕스포츠파크",
-            percentage: 16,
-            prev_week_percentage: 13,
-            icon: icon3
-        },
-        {
-            id: 4,
-            name: "옥천계곡",
-            percentage: 15,
-            prev_week_percentage: 5,
-            icon: icon4
-        },
-        {
-            id: 5,
-            name: "관룡사",
-            percentage: 22,
-            prev_week_percentage: 10,
-            icon: icon5
-        },
-        {
-            id: 6,
-            name: "창녕스포츠파크",
-            percentage: 27,
-            prev_week_percentage: 23,
-            icon: icon6
-        },
-        {
-            id: 7,
-            name: "옥천계곡",
-            percentage: 11,
-            prev_week_percentage: 14,
-            icon: icon7
-        },
-        {
-            id: 8,
-            name: "관룡사",
-            percentage: 65,
-            prev_week_percentage: 44,
-            icon: icon8
-        },
-        {
-            id: 9,
-            name: "창녕스포츠파크",
-            percentage: 24,
-            prev_week_percentage: 31,
-            icon: icon9
-        },
-        {
-            id: 10,
-            name: "창녕스포츠파크",
-            percentage: 42,
-            prev_week_percentage: 61,
-            icon: icon10
-        },
-        {
-            id: 11,
-            name: "옥천계곡",
-            percentage: 32,
-            prev_week_percentage: 13,
-            icon: icon11
-        },
-        {
-            id: 12,
-            name: "관룡사",
-            percentage: 14,
-            prev_week_percentage: 18,
-            icon: icon12
-        },
-        {
-            id: 13,
-            name: "창녕스포츠파크",
-            percentage: 12,
-            prev_week_percentage: 25,
-            icon: icon13
-        },
-        {
-            id: 14,
-            name: "옥천계곡",
-            percentage: 15,
-            prev_week_percentage: 33,
-            icon: icon14
-        },
-        {
-            id: 15,
-            name: "관룡사",
-            percentage: 33,
-            prev_week_percentage: 26,
-            icon: icon15
-        },
-        {
-            id: 16,
-            name: "창녕스포츠파크",
-            percentage: 12,
-            prev_week_percentage: 34,
-            icon: icon16
-        },
+        { id: 1, icon: icon1,status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 2, icon: icon2,status: "down", name: "관룡사", percentage: 6 },
+        { id: 3, icon: icon3,status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 4, icon: icon4,status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 5, icon: icon5,status: "down", name: "관룡사", percentage: 6 },
+        { id: 6, icon: icon6,status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 7, icon: icon7,status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 8, icon: icon8,status: "down", name: "관룡사", percentage: 6 },
+        { id: 9, icon: icon9,status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 10,icon: icon10, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 11,icon: icon11, status: "down", name: "관룡사", percentage: 6 },
+        { id: 12,icon: icon12, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 13,icon: icon13, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 14,icon: icon14, status: "down", name: "관룡사", percentage: 6 },
+        { id: 15,icon: icon15, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 16,icon: icon16, status: "down", name: "옥천계곡", percentage: 13 },
     ]
+
+    // ITEM ACTIVE HANDLER =====
+
+    const handlarAct = () => {
+        if (itemActRef.current !== null) {
+            itemActRef.current.slides.map(item => {
+                if (item.id === `splide02-slide${weekActItem < 10 ? '0' + weekActItem : weekActItem}`) {
+                    item.classList.add('is-active')
+                }
+                else {
+                    item.classList.remove('is-active')
+                }
+            })
+        }
+    }
+
+    useEffect(() => {
+        handlarAct()
+    }, [weekActItem])
 
     return (
         <>
             <section className='week-spots'>
                 <h3 className="week-spots__title">주간 인기 관광지</h3>
 
-                <ul className="week-spots__list">
-                    <Splide
-                        aria-label="My Favorite Images"
-                        options={{
-                            perPage: 1,
-                            rewind: true,
-                            type: 'loop',
-                            speed: '1000',
-                            interval: 3400,
-                            autoplay: true,
-                        }}
-                    >
-                        {arr.map(item => (
-                            <SplideSlide key={item.id}>
-                                <li className={`week-spots__item ${item.id === +localStorage.getItem('week-spots-item-ID') ? "weekSpotsActItem" : ""}`}
-                                    onClick={() => (setWeekSpotsActItem(item.id), localStorage.setItem('week-spots-item-ID', item.id), setPopularName(item.name))}
-                                >
-                                    <span className='week-spots__item-icon'>
-                                        <img src={item.icon} alt={item.name} />
-                                    </span>
-                                    <p className="week-spots__item-num">{item.id}위</p>
-                                    <h4 className="week-spots__item-name">{item.name}</h4>
-                                    <p className="week-spots__item-percentage">
-                                        <span><AiFillCaretUp /></span> {item.percentage}%
-                                    </p>
-                                </li>
-                            </SplideSlide>
-                        ))}
-                    </Splide>
-                </ul>
+                <Splide
+                    aria-label="My Favorite Images"
+                    options={{
+                        perPage: 1,
+                        rewind: true,
+                        type: 'loop',
+                        speed: '1000',
+                        interval: 3400,
+                        autoplay: true,
+                    }}
+                >
+                    {arr.map(item => (
+                        <SplideSlide key={item.id}
+                            className={`week-spots__item ${item.id === weekActItem ? "weekSpotsActItem" : ""}`}
+                            onClick={() => (setWeekActItem(item.id), setPopularName(item.name))}
+                        >
+                            <span className='week-spots__item-icon'>
+                                <img src={item.icon} alt={item.name} />
+                            </span>
+                            <p className="week-spots__item-num">{item.id}위</p>
+                            <h4 className="week-spots__item-name">{item.name}</h4>
+                            <p className={`week-spots__item-percentage 
+                                ${weekActItem === item.id ? item.status === "down" ?
+                                    "decreasedColor" : "" : item.status === "down" ? "decreased" : ""}
+                                    `}>
+                                <span><AiFillCaretUp /></span> {item.percentage}%
+                            </p>
+                        </SplideSlide>
+                    ))}
+                </Splide>
             </section>
         </>
     )

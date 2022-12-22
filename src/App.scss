@@ -48,6 +48,21 @@ span {
   padding: 36px 44px 56px 54px;
   background: $primary-color-1;
 }
+.decreasedColor{
+  color: $primary-color-13 !important;
+  span {
+    color: $primary-color-13 !important;
+    transform: rotate(180deg) !important;
+  }
+}
+.decreased {
+  span {
+    transform: rotate(180deg) !important;
+  }
+}
+.raisedColor {
+  color: $primary-color-5 !important;
+}
 
 // = = = = = = = = = = =
 

@@ -53,7 +53,6 @@ export default function Weather() {
       setWeatherMain(data.weather[0].main)
       setWeatherGradus(data.main.temp)
       setHumidity(data.main.humidity)
-      console.log(data);
     })
   }, [])
  
