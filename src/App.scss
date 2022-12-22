@@ -48,7 +48,7 @@ span {
   padding: 36px 44px 56px 54px;
   background: $primary-color-1;
 }
-.decreasedColor{
+.decreasedColor {
   color: $primary-color-13 !important;
   span {
     color: $primary-color-13 !important;
@@ -57,7 +57,7 @@ span {
 }
 .decreased {
   span {
-    transform: rotate(180deg) !important;
+    transform: rotate(0deg) !important;
   }
 }
 .raisedColor {

@@ -8,19 +8,19 @@ export default function FPopulatRatio({ setPopularName }) {
     const [eActItem, setEActItem] = useState(1)
     const arr = [
         { id: 1, status: "down", name: "옥천계곡", percentage: 13 },
-        { id: 2, status: "down", name: "관룡사", percentage: 6 },
+        { id: 2, status: "up", name: "관룡사", percentage: 6 },
         { id: 3, status: "down", name: "창녕스포츠파크", percentage: 22 },
-        { id: 4, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 4, status: "up", name: "옥천계곡", percentage: 13 },
         { id: 5, status: "down", name: "관룡사", percentage: 6 },
         { id: 6, status: "down", name: "창녕스포츠파크", percentage: 22 },
-        { id: 7, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 7, status: "up", name: "옥천계곡", percentage: 13 },
         { id: 8, status: "down", name: "관룡사", percentage: 6 },
         { id: 9, status: "down", name: "창녕스포츠파크", percentage: 22 },
-        { id: 10, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 10, status: "up", name: "옥천계곡", percentage: 13 },
         { id: 11, status: "down", name: "관룡사", percentage: 6 },
         { id: 12, status: "down", name: "창녕스포츠파크", percentage: 22 },
-        { id: 13, status: "down", name: "옥천계곡", percentage: 13 },
-        { id: 14, status: "down", name: "관룡사", percentage: 6 },
+        { id: 13, status: "up", name: "옥천계곡", percentage: 13 },
+        { id: 14, status: "up", name: "관룡사", percentage: 6 },
         { id: 15, status: "down", name: "창녕스포츠파크", percentage: 22 },
         { id: 16, status: "down", name: "옥천계곡", percentage: 13 },
     ]
@@ -67,14 +67,14 @@ export default function FPopulatRatio({ setPopularName }) {
                     >
                         {arr.map(item => (
                             <SplideSlide key={item.id}
-                                className={`fPopulat__item ${item.id === eActItem ? "is-active" : ""}`}
-                                onClick={() => (setEActItem(item.id), setPopularName(item.name))}
+                                className="fPopulat__item"
+                            // onClick={() =>  setPopularName(item.name)}
                             >
                                 <div className="fPopulat__item-info">
                                     <p className='fPopulat__item-num'>{item.id}위</p>
                                     <p className="fPopulat__item-name">{item.name}</p>
-                                    <p className={`fPopulat__item-percetage ${eActItem === item.id ? item.status === "down" ?
-                                        "decreasedColor" : "" : item.status === "down" ? "decreased" : ""}
+                                    <p className={`fPopulat__item-percetage ${item.status === "down" ?
+                                        "decreasedColor" : "decreased"}
                                     `}>
                                         <span><AiFillCaretUp /></span> {item.percentage}%
                                     </p>
