@@ -34,21 +34,21 @@ export default function WeeklyTopSpots({ setPopularName }) {
     const [weekActItem, setWeekActItem] = useState(1)
     // const itemActRef = useRef(null)
     const arr = [
-        { id: 1, status: "down", name: "옥천계곡", percentage: 13 },
-        { id: 2, status: "up", name: "관룡사", percentage: 6 },
-        { id: 3, status: "down", name: "창녕스포츠파크", percentage: 22 },
-        { id: 4, status: "up", name: "옥천계곡", percentage: 13 },
-        { id: 5, status: "up", name: "관룡사", percentage: 6 },
-        { id: 6, status: "up", name: "창녕스포츠파크", percentage: 22 },
-        { id: 7, status: "down", name: "창녕군청", percentage: 13 },
-        { id: 8, status: "down", name: "관룡사", percentage: 6 },
-        { id: 9, status: "down", name: "옥천계곡", percentage: 13 },
-        { id: 10, status: "up", name: "관룡사", percentage: 6 },
-        { id: 11, status: "down", name: "창녕스포츠파크", percentage: 22 },
-        { id: 12, status: "up", name: "옥천계곡", percentage: 13 },
-        { id: 13, status: "up", name: "관룡사", percentage: 6 },
-        { id: 14, status: "down", name: "창녕스포츠파크", percentage: 22 },
-        { id: 15, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 1, icon: icon1, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 2, icon: icon2, status: "up", name: "관룡사", percentage: 6 },
+        { id: 3, icon: icon3, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 4, icon: icon4, status: "up", name: "옥천계곡", percentage: 13 },
+        { id: 5, icon: icon5, status: "up", name: "관룡사", percentage: 6 },
+        { id: 6, icon: icon6, status: "up", name: "창녕스포츠파크", percentage: 22 },
+        { id: 7, icon: icon7, status: "down", name: "창녕군청", percentage: 13 },
+        { id: 8, icon: icon8, status: "down", name: "관룡사", percentage: 6 },
+        { id: 9, icon: icon9, status: "down", name: "옥천계곡", percentage: 13 },
+        { id: 10, icon: icon10, status: "up", name: "관룡사", percentage: 6 },
+        { id: 11, icon: icon11, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 12, icon: icon12, status: "up", name: "옥천계곡", percentage: 13 },
+        { id: 13, icon: icon13, status: "up", name: "관룡사", percentage: 6 },
+        { id: 14, icon: icon14, status: "down", name: "창녕스포츠파크", percentage: 22 },
+        { id: 15, icon: icon15, status: "down", name: "옥천계곡", percentage: 13 },
     ]
 
     // // ITEM ACTIVE HANDLER =====
