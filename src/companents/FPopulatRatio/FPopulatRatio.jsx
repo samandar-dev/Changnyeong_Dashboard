@@ -62,9 +62,10 @@ export default function FPopulatRatio({ setPopularName }) {
                             interval: 4000,
                             autoplay: true,
                             height: '10rem',
+                            updateOnMove: true,
                             direction: 'ttb',
                         }}
-                    > 
+                    >
                         {arr.map(item => (
                             <SplideSlide key={item.id}
                                 className="fPopulat__item"

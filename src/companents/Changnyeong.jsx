@@ -372,9 +372,9 @@ export default function Changnyeong() {
         <div className="changnyeong__title">
           <Title />
         </div>
-        <div className="changnyeong__weather">
+        {/* <div className="changnyeong__weather">
           <Weather />
-        </div>
+        </div> */}
         <div className="changnyeong__trafficInfo">
           <TrafficInfo />
         </div>

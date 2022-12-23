@@ -85,6 +85,7 @@ export default function WeeklyTopSpots({ setPopularName }) {
                         speed: '700',
                         interval: 3600,
                         autoplay: true,
+                        updateOnMove: true,
                     }}
                 >
                     {/* <ul className="week-spots__list"> */}

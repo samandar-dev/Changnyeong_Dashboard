@@ -62,6 +62,7 @@ export default function DailyPopularPlaces({ test, setPopularName }) {
                         autoplay: true,
                         height: '10rem',
                         direction: 'ttb',
+                        updateOnMove: true,
                     }}>
                     {arr.map(item => (
                         <SplideSlide key={item.id}
