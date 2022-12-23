@@ -46,9 +46,6 @@
         color: $primary-color-9;
         font-family: $font-family-1;
     }
-    &__item-percetage {
-        color: $primary-color-5;
-    }
     &__item-range {
         width: 100%;
         height: 7px;
@@ -61,7 +58,7 @@
             height: 100%;
             @include p-absolute;
             border-radius: $bd-radius-6;
-            background: $primary-color-5;
+            background: $primary-color-7;
             animation: fPopulatAnimRange 1.5s both ease;
         }
         @keyframes fPopulatAnimRange {
@@ -107,13 +104,24 @@
                 }
             }
         }
-        // .is-active {
-        //     .fPopulat__item-num,
-        //     .fPopulat__item-name,
-        //     .fPopulat__item-percetage {
-        //         color: $primary-color-5;
-        //     }
-        // }
+        .is-active {
+            .fPopulat__item-num,
+            .fPopulat__item-name,
+            .fPopulat__item-percetage {
+                color: $primary-color-5;
+            }
+            .downParcen,
+            .downParcen span {
+                color: $primary-color-13 !important;
+            }
+            .upParcen,
+            .upParcen span {
+                color: $primary-color-5 !important;
+            }
+            .fPopulat__item-range span {
+                background: $primary-color-5 !important;
+            }
+        }
     }
     .splide__track {
         height: 135px !important;

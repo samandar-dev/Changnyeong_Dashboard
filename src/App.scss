@@ -48,26 +48,16 @@ span {
   padding: 36px 44px 56px 54px;
   background: $primary-color-1;
 }
-.decreasedColor {
-  color: $primary-color-13 !important;
+.downParcen {
   span {
-    color: $primary-color-13 !important;
     transform: rotate(180deg) !important;
   }
 }
-.decreased {
+.upParcen {
   span {
     transform: rotate(0deg) !important;
   }
 }
 .raisedColor {
   color: $primary-color-5 !important;
-}
-
-// = = = = = = = = = = =
-
-@keyframes animActItem {
-  100% {
-    transform: scale(1.02);
-  }
 }

@@ -58,13 +58,13 @@ export default function FPopulatRatio({ setPopularName }) {
                             perPage: 1,
                             rewind: true,
                             type: 'loop',
-                            speed: '1000',
-                            interval: 3600,
+                            speed: '700',
+                            interval: 4000,
                             autoplay: true,
                             height: '10rem',
                             direction: 'ttb',
                         }}
-                    >
+                    > 
                         {arr.map(item => (
                             <SplideSlide key={item.id}
                                 className="fPopulat__item"
@@ -74,7 +74,7 @@ export default function FPopulatRatio({ setPopularName }) {
                                     <p className='fPopulat__item-num'>{item.id}위</p>
                                     <p className="fPopulat__item-name">{item.name}</p>
                                     <p className={`fPopulat__item-percetage ${item.status === "down" ?
-                                        "decreasedColor" : "decreased"}
+                                        "downParcen" : "upParcen"}
                                     `}>
                                         <span><AiFillCaretUp /></span> {item.percentage}%
                                     </p>

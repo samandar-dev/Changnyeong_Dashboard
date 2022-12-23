@@ -20,16 +20,15 @@
         @include flex;
     }
     &__item {
-        width: 33.3%;
-        height: auto;
-        margin: 0 5px;
-        cursor: pointer;
-        min-width: 125px;
-        position: relative;
-        @include fl-center;
-        width: auto !important;
-        flex-direction: column;
-        transition: all 0.15s ease;
+        // width: 33.3%;
+        // height: auto;
+        // margin: 0 5px;
+        // min-width: 125px;
+        // position: relative;
+        // @include fl-center;
+        // width: auto !important;
+        // flex-direction: column;
+        // transition: all 0.15s ease;
     }
     &__item-icon {
         width: 70px;
@@ -75,54 +74,62 @@
             margin-right: 3px;
         }
     }
-    // .splide {
-    //     padding: 0 !important;
-    //     width: 100% !important;
-    //     height: 145px !important;
-    //     overflow: hidden !important;
-    //     .splide__arrow,
-    //     .splide__pagination {
-    //         display: none !important;
-    //     }
-    //     .splide__slide {
-    //         height: auto;
-    //         margin: 0 5px;
-    //         cursor: pointer;
-    //         min-width: 125px;
-    //         position: relative;
-    //         @include fl-center;
-    //         width: auto !important;
-    //         flex-direction: column;
-    //         transition: all 0.15s ease;
-    //     }
-    //     .is-active {
-    //         img {
-    //             object-fit: cover;
-    //             filter: brightness(0) saturate(100%) invert(82%) sepia(32%) saturate(1162%) hue-rotate(124deg)
-    //                 brightness(98%) contrast(92%);
-    //         }
-    //         .week-spots__item-num {
-    //             background: $primary-color-5;
-    //         }
-    //         h4,
-    //         .week-spots__item-percentage {
-    //             color: $primary-color-5;
-    //         }
-    //     }
-    // }
-}
-.weekSpotsActItem {
-    @include animClick;
-    img {
-        object-fit: cover;
-        filter: brightness(0) saturate(100%) invert(82%) sepia(32%) saturate(1162%) hue-rotate(124deg) brightness(98%)
-            contrast(92%);
-    }
-    .week-spots__item-num {
-        background: $primary-color-5;
-    }
-    h4,
-    .week-spots__item-percentage {
-        color: $primary-color-5;
+    .splide {
+        padding: 0 !important;
+        width: 100% !important;
+        height: 145px !important;
+        overflow: hidden !important;
+        .splide__arrow,
+        .splide__pagination {
+            display: none !important;
+        }
+        .splide__slide {
+            height: auto;
+            margin: 0 5px;
+            cursor: pointer;
+            min-width: 125px;
+            position: relative;
+            @include fl-center;
+            width: auto !important;
+            flex-direction: column;
+            transition: all 0.15s ease;
+        }
+        .is-active {
+            img {
+                object-fit: cover;
+                filter: brightness(0) saturate(100%) invert(82%) sepia(32%) saturate(1162%) hue-rotate(124deg)
+                    brightness(98%) contrast(92%);
+            }
+            .week-spots__item-num {
+                background: $primary-color-5;
+            }
+            h4,
+            .week-spots__item-percentage {
+                color: $primary-color-5;
+            }
+            .downParcen,
+            .downParcen span {
+                color: $primary-color-13 !important;
+            }
+            .upParcen,
+            .upParcen span {
+                color: $primary-color-5 !important;
+            }
+        }
     }
 }
+// .weekSpotsActItem {
+//     @include animClick;
+//     img {
+//         object-fit: cover;
+//         filter: brightness(0) saturate(100%) invert(82%) sepia(32%) saturate(1162%) hue-rotate(124deg) brightness(98%)
+//             contrast(92%);
+//     }
+//     .week-spots__item-num {
+//         background: $primary-color-5;
+//     }
+//     h4,
+//     .week-spots__item-percentage {
+//         color: $primary-color-5;
+//     }
+// }

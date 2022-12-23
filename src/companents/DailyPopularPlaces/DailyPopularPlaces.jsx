@@ -49,38 +49,34 @@ export default function DailyPopularPlaces({ test, setPopularName }) {
             <section className='dailyPP'>
                 <h3 className="dailyPP__title">일간 인기 관광지</h3>
 
-                <div className="dailyPP__slid">
-                    {/* <Splide
-                        aria-label="My Favorite Images"
-                        ref={itemActRef}
-                        options={{
-                            perPage: 1,
-                            rewind: true,
-                            type: 'loop',
-                            speed: '500',
-                            interval: 3000,
-                            autoplay: true,
-                            height: '10rem',
-                            direction: 'ttb',
-                        }}> */}
-                    {arr.map((item, inx) => (
-                        inx+1 <= 3 ?
-                            <li key={item.id}
-                                className={`dailyPP__item ${item.id === actItem ? "dailyPPAct" : ""}`}
-                                onClick={() => (setActItem(item.id), setPopularName(item.name))}
-                            >
-                                <p className="dailyPP__num">{item.id}위</p>
-                                <p className="dailyPP__name">{item.name}</p>
-                                <p className={`dailyPP__percentage
-                                        ${actItem === item.id ? item.status === "down" ?
-                                        "decreasedColor" : "" : item.status === "down" ? "decreased" : ""}
-                                    `}>
-                                    <span><AiFillCaretUp /></span> {item.percentage}%
-                                </p>
-                            </li> : ""
+                {/* <div className="dailyPP__slid"> */}
+                <Splide
+                    aria-label="My Favorite Images"
+                    ref={itemActRef}
+                    options={{
+                        perPage: 1,
+                        rewind: true,
+                        type: 'loop',
+                        speed: '700',
+                        interval: 3200,
+                        autoplay: true,
+                        height: '10rem',
+                        direction: 'ttb',
+                    }}>
+                    {arr.map(item => (
+                        <SplideSlide key={item.id}
+                            className="dailyPP__item"
+                        // onClick={() => (setActItem(item.id), setPopularName(item.name))}
+                        >
+                            <p className="dailyPP__num">{item.id}위</p>
+                            <p className="dailyPP__name">{item.name}</p>
+                            <p className={`dailyPP__percentage ${item.status === "down" ? "downParcen" : "upParcen"}`}>
+                                <span><AiFillCaretUp /></span> {item.percentage}%
+                            </p>
+                        </SplideSlide>
                     ))}
-                    {/* </Splide> */}
-                </div>
+                </Splide>
+                {/* </div> */}
             </section>
         </>
     )
