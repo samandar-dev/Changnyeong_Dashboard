@@ -1,7 +1,7 @@
 import Map from "./Map/Map";
-import GET from "../API/GET";
+import "./Changnyeong.scss";
 import Title from './Title/Title';
-import Weather from './Weather/Weather';
+import React, { useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import DateTime from './DateTime/DateTime';
 import "slick-carousel/slick/slick-theme.css";
@@ -10,16 +10,11 @@ import FPopulatRatio from "./FPopulatRatio/FPopulatRatio";
 import ItemInfoModal from "./ItemInfoModal/ItemInfoModal";
 import WeeklyTopSpots from "./WeeklyTopSpots/WeeklyTopSpots";
 import VisitPopularity from "./VisitPopularity/VisitPopularity";
-import React, { useEffect, useCallback, useState } from 'react';
 import DailyPopularPlaces from "./DailyPopularPlaces/DailyPopularPlaces";
-import "./Changnyeong.scss";
 
 export default function Changnyeong() {
   const [mapItemIDAct, setMapItemIDAct] = useState(+localStorage.getItem('itemID'))
   const [notInfoAct, setNotInfoAct] = useState(+localStorage.getItem('count_0_itemID'))
-  const [popularName, setPopularName] = useState('옥천계곡')
-  // const [arr, setArr] = useState()
-  
   const [arr, setArr] = useState([
     {
       id: 1,
@@ -337,13 +332,6 @@ export default function Changnyeong() {
       ],
     },
   ])
-  const [test, setTest] = useState(arr)
-
-  // setInterval(() => {
-  //   setTest(arr.filter(item => item.id === 2 ? item.users_count += 5 : item.users_count))
-  // }, 15000);
-
-  // useEffect(() => { setTest(arr) }, [test])
 
   return (
     <>
@@ -351,16 +339,13 @@ export default function Changnyeong() {
         <div className="changnyeong__title">
           <Title />
         </div>
-        {/* <div className="changnyeong__weather">
-          <Weather />
-        </div> */}
         <div className="changnyeong__trafficInfo">
           <TrafficInfo />
         </div>
 
         <div className="changnyeong__map">
           <Map
-            date={test}
+            date={arr}
             setNotInfoAct={setNotInfoAct}
             setMapItemIDAct={setMapItemIDAct}
           />
@@ -368,15 +353,15 @@ export default function Changnyeong() {
 
         <div className="changnyeong__right">
           <DateTime />
-          <VisitPopularity popularName={popularName} />
-          <DailyPopularPlaces test={test} setPopularName={setPopularName} />
-          <WeeklyTopSpots test={test} setPopularName={setPopularName} />
-          <FPopulatRatio test={test} setPopularName={setPopularName} />
+          <VisitPopularity />
+          <DailyPopularPlaces />
+          <WeeklyTopSpots />
+          <FPopulatRatio />
         </div>
 
         <div className="changnyeong__modal">
           <ItemInfoModal
-            date={test}
+            date={arr}
             setNotInfoAct={setNotInfoAct}
             setMapItemIDAct={setMapItemIDAct}
           />

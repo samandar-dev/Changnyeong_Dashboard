@@ -1,5 +1,5 @@
-import React from 'react';
 import map from "../../assets/images/map.png";
+import React from 'react';
 import "./Map.scss";
 
 export default function Map({ date, setMapItemIDAct, setNotInfoAct }) {

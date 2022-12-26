@@ -61,6 +61,10 @@
         width: 100% !important;
         overflow: visible !important;
         padding-bottom: 20px !important;
+        .splide__track {
+            padding: 20px 24px;
+            height: 160px !important;
+        }
         .splide__arrow,
         .splide__pagination {
             display: none !important;
@@ -73,10 +77,10 @@
             box-shadow: $b-shadow-1;
             display: flex !important;
             border-radius: $bd-radius-2;
+            padding: 11px 22px 11px 18px;
             background: $primary-color-17;
             align-items: center !important;
             border: 1px solid $primary-color-18;
-            padding: 11px 22px 11px 18px;
             p,
             p span {
                 color: $primary-color-9;
@@ -98,15 +102,4 @@
             }
         }
     }
-    .splide__track {
-        padding: 20px 24px;
-        height: 160px !important;
-    }
 }
-// .dailyPPAct {
-//     p,
-//     span {
-//         color: #16f0f0;
-//     }
-//     border-color: #16f0f0;
-// }
